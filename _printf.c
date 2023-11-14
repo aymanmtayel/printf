@@ -18,36 +18,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	va_start(list, format);
 	ptr = format;
-	while (*ptr != '\0')
-	{
-		if (*ptr == '%')
-		{
-			++ptr;
-			switch (*ptr)
-			{
-				case 'c':
-					print += _putchar(list);
-					break;
-				case 's':
-					print += _printf_string(list);
-					break;
-				case '%':
-					print += write(1, ptr, 1);
-					break;
-				case 'd':
-				case 'i':
-					print += _printf_int(list);
-					break;
-				default:
-					print += write(1, "%", 1);
-					print += write(1, ptr, 1);
-			}
-		}
-		else
-			print += write(1, ptr, 1);
-		ptr++;
-	}
-		va_end(list);
-		return (print);
-}
 
+	print = _case(list, ptr);
+
+		return (print); }
